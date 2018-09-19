@@ -146,4 +146,13 @@ public class PayStationImplTest {
         }
         assertEquals(15, ps.empty());
     }
+    
+    @Test
+    public void EmptyReturnsTotalAfterBuy() throws IllegalCoinException{
+        for(int i = 0; i < 3; i++){
+            ps.addPayment(5);
+        }
+        ps.buy();
+        assertEquals(15, ps.empty());
+    }
 }
