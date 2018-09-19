@@ -140,11 +140,11 @@ public class PayStationImplTest {
     }
     
     @Test
-    public void EmptyReturnsTotal() throws IllegalCoinException{
+    public void EmptyReturnsTotalNoBuy() throws IllegalCoinException{
         for(int i = 0; i < 3; i++){
             ps.addPayment(5);
         }
-        assertEquals(15, ps.empty());
+        assertEquals(0, ps.empty());
     }
     
     @Test
@@ -153,6 +153,17 @@ public class PayStationImplTest {
             ps.addPayment(5);
         }
         ps.buy();
+        //ps.addPayment(10);
+        assertEquals(15, ps.empty());
+    }
+    
+     @Test
+    public void EmptyReturnsTotalAfterBuyandAddNBuy() throws IllegalCoinException{
+        for(int i = 0; i < 3; i++){
+            ps.addPayment(5);
+        }
+        ps.buy();
+        ps.addPayment(10);
         assertEquals(15, ps.empty());
     }
 }

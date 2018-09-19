@@ -22,7 +22,7 @@ package paystation.domain;
 public class PayStationImpl implements PayStation {
     
     private int insertedSoFar;
-    
+    private int totalBought;
     private int timeBought;
 
     @Override
@@ -47,6 +47,7 @@ public class PayStationImpl implements PayStation {
     @Override
     public Receipt buy() {
         Receipt r = new ReceiptImpl(timeBought);
+        totalBought += insertedSoFar;
         reset();
         return r;
     }
@@ -62,8 +63,7 @@ public class PayStationImpl implements PayStation {
     
     @Override
     public int empty(){
-        int cents = insertedSoFar;
         reset(); // empties total amount of coins collected
-        return cents;
+        return totalBought;
     }
 }
