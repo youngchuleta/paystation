@@ -21,6 +21,9 @@ package paystation.domain;
 
 //import java.util.Map;
 
+import java.util.Map;
+
+
 public interface PayStation {
 
     /**
@@ -57,8 +60,8 @@ public interface PayStation {
        * The Map will only contain only keys for coins to be returned. 
        * The Map will be cleared after a cancel or buy. 
     */
-    //Map<Integer, Integer> cancel();
-    public void cancel();
+    public Map<Integer, Integer> cancel();
+
     
     /* Returns the total amount of money collected by the paystation 
      * since the last call and empties it, setting the total to zero.
