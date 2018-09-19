@@ -177,4 +177,20 @@ public class PayStationImplTest {
         ps.cancel();
         assertEquals(15, ps.empty());
     }
+    
+    @Test
+    public void CalltoEmptyReturns0() throws IllegalCoinException{
+        assertEquals(0, ps.empty());
+    }
+    
+    @Test
+    public void SecondCalltoEmptyReturns0() throws IllegalCoinException{
+        for(int i = 0; i < 3; i++){
+            ps.addPayment(5);
+        }
+        ps.buy();
+        ps.addPayment(10);
+        assertEquals(15, ps.empty());
+        assertEquals(0, ps.empty());
+    }
 }

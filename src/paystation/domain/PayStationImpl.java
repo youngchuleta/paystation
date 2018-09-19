@@ -63,7 +63,9 @@ public class PayStationImpl implements PayStation {
     
     @Override
     public int empty(){
+        int cents = totalBought;
+        totalBought = 0;
         reset(); // empties total amount of coins collected
-        return totalBought;
+        return cents;
     }
 }
